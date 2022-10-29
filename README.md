@@ -1,6 +1,8 @@
 1) Create Two Droplets in DigitalOcean - one should be Rocky 8/9 and one should be Ubuntu 22.04. Please add 'web' as a tag to each droplet
 
-2) On the host, create a working directory in WSL
+2) Please ensure that you create an SSH key pair so that the machines can be accessed via SSH
+
+2) On the host, create a working directory in WSL - this will be where you create the ansible files
 
 3) Initialize this directory as a git repo and create a git ignore file to ignore keys
 
