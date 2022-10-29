@@ -38,7 +38,7 @@ compose:
 ```
 
 Here's a screenshot that I have two servers setup:
-![Snippet](snip.png)
+![Snippet](snip.PNG)
 
 6) Create a regular user by creating a yaml file called new_user.yml and be sure to:
 - give the user a name
