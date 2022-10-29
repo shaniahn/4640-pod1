@@ -1,0 +1,38 @@
+---
+
+- name: create new user
+  hosts: webservers
+  tasks:
+    - name: create user in rocky
+      when: ansible_distribution == "Rocky"
+      user:
+        name: test_user
+        shell: /bin/bash
+        groups: wheel
+        append: yes
+        state: present
+        createhome: yes
+        system: no
+        home: /home/test_user
+    - name: create user in ubuntu
+      when: ansible_distribution == "Ubuntu"
+      user:
+        name: test_user
+        shell: /bin/bash
+        groups: sudo
+        append: yes
+        state: present
+        createhome: yes
+        system: no
+        home: /home/test_user
+    - name: copy .ssh directory to user directory
+      copy:
+        src: ~/.ssh/
+        dest: /home/test_user/.ssh
+        owner: test_user
+    - name: add authorized_keys folder
+      copy:
+        src: authorized_keys
+        dest: /home/test_user/.ssh
+        owner: test_user
+...

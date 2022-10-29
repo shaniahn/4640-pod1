@@ -1,0 +1,21 @@
+---
+- name: Installing podman
+  hosts: webservers
+  tasks:
+    - name: Installing podman - Ubuntu
+      when: ansible_distribution == "Ubuntu"
+      become_user: root
+      apt:
+        name: podman
+        state: present
+    - name: Installing podman - Rocky
+      when: ansible_distribution == "Rocky"
+      become_user: root
+      yum:
+        name: podman
+        state: present
+    - name: Pulling container
+      podman_image:
+        name: docker.io/httpd
+        tag: 2-alpine
+...
